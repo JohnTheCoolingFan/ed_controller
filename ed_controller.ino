@@ -7,6 +7,8 @@
 #define BUTTON_D      5
 #define BUTTON_E      6
 #define BUTTON_F      7
+#define SW1           8
+#define SW2           9
 #define VRx1          A0
 #define VRy1          A1
 #define VRx2          A2
@@ -15,7 +17,7 @@
 
 // Joystick setup
 Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,
-        JOYSTICK_TYPE_MULTI_AXIS, 8, 0,
+        JOYSTICK_TYPE_MULTI_AXIS, 12, 0,
         true, true, false, false, false, false,
         false, true, false, false, false);
 
@@ -28,6 +30,8 @@ void setup() {
     pinMode(BUTTON_D, INPUT_PULLUP);
     pinMode(BUTTON_E, INPUT_PULLUP);
     pinMode(BUTTON_F, INPUT_PULLUP);
+    pinMode(SW1,      INPUT_PULLUP);
+    pinMode(SW2,      INPUT_PULLUP);
 
     //   Analog
     pinMode(VRx1, INPUT);
@@ -139,6 +143,31 @@ void loop() {
         Joystick.pressButton(7);
     } else {
         Joystick.releaseButton(7);
+    }
+
+
+    // Other Buttons
+    //   E and F
+    if (!digitalRead(BUTTON_E)) {
+        Joystick.pressButton(8);
+    } else {
+        Joystick.releaseButton(8);
+    }
+    if (!digitalRead(BUTTON_F)) {
+        Joystick.pressButton(9);
+    } else {
+        Joystick.releaseButton(9);
+    }
+    // SW1 and SW2
+    if (!digitalRead(SW1)) {
+        Joystick.pressButton(10);
+    } else {
+        Joystick.releaseButton(10);
+    }
+    if (!digitalRead(SW2)) {
+        Joystick.pressButton(11);
+    } else {
+        Joystick.releaseButton(11);
     }
 
     //   VRx2 (Yaw or Roll)
