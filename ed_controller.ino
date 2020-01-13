@@ -37,7 +37,7 @@ void setup() {
     pinMode(POTENTIOMETER, INPUT);
 
     // Keyboard
-    Keyboard.begin();
+    //Keyboard.begin();
     // Joystick
     Joystick.begin();
 }
