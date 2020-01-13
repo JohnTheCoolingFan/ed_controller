@@ -15,7 +15,7 @@
 
 // Joystick setup
 Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,
-        JOYSTICK_TYPE_MULTI_AXIS, 0, 0,
+        JOYSTICK_TYPE_MULTI_AXIS, 8, 0,
         true, true, false, false, false, false,
         false, true, false, false, false);
 
@@ -43,51 +43,102 @@ void setup() {
 }
 
 void loop() {
+    /* Pressing keyboard buttons instead of joystick buttons
     // Buttons A-C
     if (!digitalRead(BUTTON_A)) {
-    Keyboard.press('1');
+        Keyboard.press('1');
     } else {
-    Keyboard.release('1');
+        Keyboard.release('1');
     }
     if (!digitalRead(BUTTON_B)) {
-    Keyboard.press('2');
+        Keyboard.press('2');
     } else {
-    Keyboard.release('2');
+        Keyboard.release('2');
     }
     if (!digitalRead(BUTTON_C)) {
-    Keyboard.press('3');
+        Keyboard.press('3');
     } else {
-    Keyboard.release('3');
+        Keyboard.release('3');
     }
     if (!digitalRead(BUTTON_D)) {
-    Keyboard.press('4');
+        Keyboard.press('4');
     } else {
-    Keyboard.release('4');
+        Keyboard.release('4');
     }
 
 
     // Joystick
     //   VRx1 (Left / Right arrow)
     if (analogRead(VRx1) >  (512 + 128)) {
-    Keyboard.press(KEY_RIGHT_ARROW);
+        Keyboard.press(KEY_RIGHT_ARROW);
     } else {
-    Keyboard.release(KEY_RIGHT_ARROW);
+        Keyboard.release(KEY_RIGHT_ARROW);
     }
     if (analogRead(VRx1) <  (512 - 128)) {
-    Keyboard.press(KEY_LEFT_ARROW);
+        Keyboard.press(KEY_LEFT_ARROW);
     } else {
-    Keyboard.release(KEY_LEFT_ARROW);
+        Keyboard.release(KEY_LEFT_ARROW);
     }
     //   VRy1 (Up / Down arrow)
     if (analogRead(VRy1) >  (512 + 128)) {
-    Keyboard.press(KEY_UP_ARROW);
+        Keyboard.press(KEY_UP_ARROW);
     } else {
-    Keyboard.release(KEY_UP_ARROW);
+        Keyboard.release(KEY_UP_ARROW);
     }
     if (analogRead(VRy1) <  (512 - 128)) {
-    Keyboard.press(KEY_DOWN_ARROW);
+        Keyboard.press(KEY_DOWN_ARROW);
     } else {
-    Keyboard.release(KEY_DOWN_ARROW);
+        Keyboard.release(KEY_DOWN_ARROW);
+    }
+     */
+
+
+    // Using joystick buttons
+    // Buttons A-C
+    if (!digitalRead(BUTTON_A)) {
+        Joystick.pressButton(0);
+    } else {
+        Joystick.releaseButton(0);
+    }
+    if (!digitalRead(BUTTON_B)) {
+        Joystick.pressButton(1);
+    } else {
+        Joystick.releaseButton(1);
+    }
+    if (!digitalRead(BUTTON_C)) {
+        Joystick.pressButton(2);
+    } else {
+        Joystick.releaseButton(2);
+    }
+    if (!digitalRead(BUTTON_D)) {
+        Joystick.pressButton(3);
+    } else {
+        Joystick.releaseButton(3);
+    }
+
+
+    // Joystick
+    //   VRx1
+    if (analogRead(VRx1) >  (512 + 128)) {
+        Joystick.pressButton(4);
+    } else {
+        Joystick.releaseButton(4);
+    }
+    if (analogRead(VRx1) <  (512 - 128)) {
+        Joystick.pressButton(5);
+    } else {
+        Joystick.releaseButton(5);
+    }
+    //   VRy1
+    if (analogRead(VRy1) >  (512 + 128)) {
+        Joystick.pressButton(6);
+    } else {
+        Joystick.releaseButton(6);
+    }
+    if (analogRead(VRy1) <  (512 - 128)) {
+        Joystick.pressButton(7);
+    } else {
+        Joystick.releaseButton(7);
     }
 
     //   VRx2 (Yaw or Roll)
